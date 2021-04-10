@@ -5,6 +5,9 @@ const morgan = require('morgan');
 const path = require('path');
 const { mongoose } = require('./database');
 const app = express();
+require ('dotenv').config();
+
+console.log(process.env);
 
 //Settings
 app.set ('port', process.env.PORT || 3000)
