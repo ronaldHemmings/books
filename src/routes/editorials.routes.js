@@ -30,17 +30,24 @@ router.get('/:id', async (req, res) => {
     
 // });
 
-router.post('/', (req, res) => {
-    const { name, email, NIF} = req.body;
-    const newEditorial = new editorial ({name, email, NIF});
-    newEditorial.save().then(editorial => res.json(editorial))
+// router.post('/', (req, res) => {
+//     const { name, email, NIF} = req.body;
+//     const Editorial = new editorial ({name, email, NIF});
+//     Editorial.save().then(editorial => res.json(editorial))
+// });
+
+router.post('/', async (req, res) => {
+    const { name, email, NIF  } = req.body;
+    const Editorial = new editorial ({ name, email, NIF });
+    await Editorial.save();
+    res.json ({status: 'Editorial saved'});
 });
 
  router.put('/:id', async (req, res) => {
      const { name, email, NIF} = req.body;
      const neweditorial = {name, email, NIF};
      //console.log(req.params.id);
-     await editorial.findByIdAndUpdate (req.params.id, neweditorial);
+     await editorials.findByIdAndUpdate (req.params.id, neweditorial);
      res.json ({status: 'Editorial updated'});
 });
 

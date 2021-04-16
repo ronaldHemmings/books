@@ -3,11 +3,11 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const BookSchema = new Schema({
+const bookSchema = new Schema({
     title: { type: String, required: true},
     author: { 
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Author" // Esto apunta a la exportación del model de author.js
+        ref: "author"
     },
     ISBN: { type: String, required: true},
     genre: { type: String, required: true}
@@ -18,5 +18,5 @@ const BookSchema = new Schema({
     // editorial: { type: String, required: true}, 
 });
 
-module.exports = mongoose.model('Book', BookSchema);
+module.exports = mongoose.model('book', bookSchema);
 

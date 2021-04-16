@@ -14,8 +14,8 @@ const authors = require('../models/author');
 // });
 
 router.get('/', async (req, res) => {
-     const Authors = await authors.find();
-     res.json(Authors);
+     const Author = await authors.find();
+     res.json(Author);
  });
 
 router.get('/:id', async (req, res) => {

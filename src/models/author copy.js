@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const AuthorSchema = new Schema({
+const authorSchema = new Schema({
     name:  { type: String, required: true},
     surname: { type: String, required: true},
     email: { type: String, required: true},
@@ -13,4 +13,4 @@ const AuthorSchema = new Schema({
     // proWriter: {type: Boolean, required: true} 
 });
 
-module.exports = mongoose.model('Author', AuthorSchema);
+module.exports = mongoose.model('author', authorSchema);

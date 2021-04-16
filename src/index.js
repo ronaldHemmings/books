@@ -7,9 +7,9 @@ const { mongoose } = require('./database');
 const app = express();
 
 // para añadir el modulo dotenv
-require('dotenv').config()
 
-console.log(process.env);
+
+//console.log(process.env);
 
 //Settings
 app.set ('port', process.env.PORT || 3000)
@@ -18,7 +18,7 @@ app.set ('port', process.env.PORT || 3000)
 app.use(morgan('dev'));
 app.use(express.json()); 
 //Routes
-app.use('/api/books' ,require('./routes/books.routes'));
+app.use('/api/books' ,require('./routes/book.routes'));
 app.use('/api/authors' ,require('./routes/authors.routes'));
 app.use('/api/readers' ,require('./routes/readers.routes'));
 app.use('/api/editorials' ,require('./routes/editorials.routes'));
