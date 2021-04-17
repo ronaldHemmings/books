@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 
-const editorial = require('../models/editorial');
+const editorials = require('../models/editorial');
 
 // router.get('/', (req, res) => {
 //     books.find = (function (err, books){
@@ -14,12 +14,12 @@ const editorial = require('../models/editorial');
 // });
 
 router.get('/', async (req, res) => {
-     const Editorial = await editorial.find();
+     const Editorial = await editorials.find();
      res.json(Editorial);
  });
 
 router.get('/:id', async (req, res) => {
-    const filterEditorial = await editorial.findById(req.params.id);
+    const filterEditorial = await editorials.findById(req.params.id);
     res.json(filterEditorial);
 });
 
@@ -38,21 +38,29 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const { name, email, NIF  } = req.body;
-    const Editorial = new editorial ({ name, email, NIF });
+    const Editorial = new editorials ({ name, email, NIF });
     await Editorial.save();
     res.json ({status: 'Editorial saved'});
 });
 
  router.put('/:id', async (req, res) => {
      const { name, email, NIF} = req.body;
-     const neweditorial = {name, email, NIF};
+     const AmendEditorial = {name, email, NIF};
      //console.log(req.params.id);
-     await editorials.findByIdAndUpdate (req.params.id, neweditorial);
+     await editorials.findByIdAndUpdate (req.params.id, AmendEditorial);
      res.json ({status: 'Editorial updated'});
 });
 
+// router.put('/:id', async (req, res) => {
+//     const { name, surname, email, address, phone, birthDate, proWriter } = req.body;
+//     const newAuthor = {name, surname, email, address, phone, birthDate, proWriter};
+//     //console.log(req.params.id);
+//     await authors.findByIdAndUpdate (req.params.id, newAuthor);
+//     res.json ({status: 'Author updated'});
+// });
+
 router.delete ('/:id', async (req, res) => {
-    await editorial.findByIdAndRemove (req.params.id);
+    await editorials.findByIdAndRemove (req.params.id);
     res.json ({status: 'Editorial deleted'});
 });
 

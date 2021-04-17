@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 
 
 router.get('/:id', async (req, res) => {
-    const filterBook = await book.findById(req.params.id);
+    const filterBook = await Book.findById(req.params.id);
     res.json(filterBook);
 });
 
@@ -50,12 +50,12 @@ router.put('/:id', async (req, res) => {
     const { title, author, ISBN, genre  } = req.body;
     const amendBook = {title, author, ISBN, genre };
     //console.log(req.params.id);
-    await book.findByIdAndUpdate (req.params.id, amendBook);
+    await Book.findByIdAndUpdate (req.params.id, amendBook);
     res.json ({status: 'Book updated'});
 });
 
 router.delete ('/:id', async (req, res) => {
-    await book.findByIdAndRemove (req.params.id);
+    await Book.findByIdAndRemove (req.params.id);
     res.json ({status: 'Book deleted'});
 });
 
